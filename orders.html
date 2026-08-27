@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSA Web - My Orders</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+    min-height:100vh;
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6%;
+    background:#080b18;
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.back{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid #334155;
+    border-radius:9px;
+}
+
+.back:hover{
+    color:#38bdf8;
+    border-color:#38bdf8;
+}
+
+.container{
+    width:92%;
+    max-width:1050px;
+    margin:45px auto 80px;
+}
+
+.header{
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.header p{
+    color:#94a3b8;
+}
+
+.card{
+    padding:25px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#11172b,#0b1020);
+    border:1px solid #27304e;
+}
+
+.order{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:20px;
+    padding:20px 0;
+    border-bottom:1px solid #202a47;
+}
+
+.order:last-child{
+    border-bottom:0;
+}
+
+.order h3{
+    margin-bottom:8px;
+}
+
+.order p{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.order-id{
+    color:#64748b;
+    font-size:12px;
+}
+
+.right{
+    text-align:right;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+    color:#a78bfa;
+    margin-bottom:9px;
+}
+
+.status{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.paid{
+    background:#0f2a22;
+    color:#4ade80;
+}
+
+.pending{
+    background:#2a240e;
+    color:#facc15;
+}
+
+.failed{
+    background:#32151b;
+    color:#fb7185;
+}
+
+.empty{
+    text-align:center;
+    padding:55px 20px;
+    color:#64748b;
+}
+
+.shop{
+    display:inline-block;
+    margin-top:18px;
+    padding:12px 18px;
+    border-radius:9px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    background:#050711;
+    border-top:1px solid #1c2338;
+}
+
+@media(max-width:650px){
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .order{
+        grid-template-columns:1fr;
+    }
+
+    .right{
+        text-align:left;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>
+            My Orders
+        </h1>
+
+        <p>
+            Yahan aap apne TSA Web orders dekh sakte hain.
+        </p>
+
+    </div>
+
+
+    <div class="card" id="orders">
+
+        <div class="empty">
+
+            🧾 No orders found.
+
+            <br>
+
+            Abhi tak koi hosting plan purchase nahi kiya gaya.
+
+            <br>
+
+            <a href="pricing.html" class="shop">
+                Browse Plans →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 TSA Web — All Rights Reserved.
+</footer>
+
+
+<script>
+
+/*
+  Front-end demo:
+  Real orders ko database/backend se
+  load karna hoga.
+*/
+
+const demoOrders = [];
+
+const container =
+    document.getElementById("orders");
+
+if(demoOrders.length > 0){
+
+    container.innerHTML = "";
+
+    demoOrders.forEach(function(order){
+
+        container.innerHTML += `
+
+            <div class="order">
+
+                <div>
+
+                    <h3>
+                        ${order.name}
+                    </h3>
+
+                    <p>
+                        ${order.type}
+                    </p>
+
+                    <div class="order-id">
+                        Order ID: ${order.id}
+                    </div>
+
+                </div>
+
+                <div class="right">
+
+                    <div class="price">
+                        ₹${order.price}
+                    </div>
+
+                    <span class="status ${order.status}">
+                        ${order.status}
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

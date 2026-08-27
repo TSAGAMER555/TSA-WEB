@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - VPS Hosting</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(7,9,20,.95);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+nav{
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.login{
+    color:#fff;
+    text-decoration:none;
+    border:1px solid #334155;
+    padding:11px 18px;
+    border-radius:9px;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 6% 75px;
+
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(139,92,246,.25),
+        transparent 45%
+    );
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #38bdf8
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+    color:#94a3b8;
+    line-height:1.7;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding-bottom:90px;
+}
+
+.plans{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+}
+
+.plan{
+    background:
+    linear-gradient(
+        145deg,
+        #11172b,
+        #0b1020
+    );
+
+    border:1px solid #27304e;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.35s;
+}
+
+.plan:hover{
+    transform:translateY(-8px);
+
+    border-color:#6366f1;
+
+    box-shadow:
+    0 15px 40px
+    rgba(99,102,241,.18);
+}
+
+.popular{
+    border-color:#38bdf8;
+}
+
+.label{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    margin-bottom:15px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #2563eb
+    );
+}
+
+.plan h2{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#64748b;
+}
+
+.price{
+    color:#a78bfa;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+}
+
+.price small{
+    color:#64748b;
+    font-size:14px;
+}
+
+.features{
+    list-style:none;
+    margin-bottom:25px;
+}
+
+.features li{
+    padding:10px 0;
+
+    color:#cbd5e1;
+
+    border-bottom:
+    1px solid #1b233a;
+}
+
+.btn{
+    display:block;
+
+    text-align:center;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.info{
+    margin-top:60px;
+
+    text-align:center;
+
+    padding:45px 30px;
+
+    background:#0e1426;
+
+    border:1px solid #202a47;
+
+    border-radius:18px;
+}
+
+.info h2{
+    margin-bottom:15px;
+}
+
+.info p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+    line-height:1.7;
+}
+
+.info .btn{
+    max-width:220px;
+    margin:25px auto 0;
+}
+
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#64748b;
+
+    background:#050711;
+
+    border-top:
+    1px solid #1c2338;
+}
+
+@media(max-width:750px){
+
+    nav{
+        display:none;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .hero{
+        padding-top:75px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="hosting.html">
+            Game Hosting
+        </a>
+
+        <a href="web-hosting.html">
+            Web Hosting
+        </a>
+
+        <a href="vps.html">
+            VPS
+        </a>
+
+        <a href="pricing.html">
+            Pricing
+        </a>
+
+        <a href="support.html">
+            Support
+        </a>
+
+    </nav>
+
+    <a href="login.html" class="login">
+        Login
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        VPS <span>Hosting</span>
+    </h1>
+
+    <p>
+        Powerful virtual servers for websites,
+        applications, development environments
+        and online projects.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+    <div class="plans">
+
+
+        <!-- VPS STARTER -->
+
+        <div class="plan">
+
+            <h2>VPS Starter</h2>
+
+            <p class="description">
+                For small projects.
+            </p>
+
+            <div class="price">
+                ₹299
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 2 GB RAM</li>
+
+                <li>✓ 1 vCPU</li>
+
+                <li>✓ 30 GB SSD</li>
+
+                <li>✓ Linux Support</li>
+
+                <li>✓ Root Access</li>
+
+                <li>✓ Basic Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=vps-starter"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- VPS PRO -->
+
+        <div class="plan popular">
+
+            <div class="label">
+                MOST POPULAR
+            </div>
+
+            <h2>VPS Pro</h2>
+
+            <p class="description">
+                For growing applications.
+            </p>
+
+            <div class="price">
+                ₹599
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 4 GB RAM</li>
+
+                <li>✓ 2 vCPU</li>
+
+                <li>✓ 60 GB SSD</li>
+
+                <li>✓ Linux Support</li>
+
+                <li>✓ Root Access</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=vps-pro"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- VPS PREMIUM -->
+
+        <div class="plan">
+
+            <h2>VPS Premium</h2>
+
+            <p class="description">
+                For demanding projects.
+            </p>
+
+            <div class="price">
+                ₹999
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 8 GB RAM</li>
+
+                <li>✓ 4 vCPU</li>
+
+                <li>✓ 120 GB SSD</li>
+
+                <li>✓ Linux Support</li>
+
+                <li>✓ Root Access</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=vps-premium"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <h2>
+            Need a Custom VPS?
+        </h2>
+
+        <p>
+            Apne project ke according RAM, CPU,
+            storage aur operating system choose
+            karne ke liye TSA Web support se
+            contact karein.
+        </p>
+
+        <a
+            href="support.html"
+            class="btn"
+        >
+            Contact Support
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 TSA Web —
+    All Rights Reserved.
+
+</footer>
+
+
+</body>
+</html>

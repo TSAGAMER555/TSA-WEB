@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Bot Hosting</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(7,9,20,.95);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+nav{
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.login{
+    color:#fff;
+    text-decoration:none;
+    border:1px solid #334155;
+    padding:11px 18px;
+    border-radius:9px;
+}
+
+.login:hover{
+    border-color:#6366f1;
+    color:#60a5fa;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:100px 6% 75px;
+
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(139,92,246,.25),
+        transparent 45%
+    );
+}
+
+.hero-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #38bdf8
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+    color:#94a3b8;
+    line-height:1.7;
+    font-size:17px;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding-bottom:90px;
+}
+
+/* PLANS */
+.plans{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+}
+
+.plan{
+    position:relative;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #11172b,
+        #0b1020
+    );
+
+    border:1px solid #27304e;
+
+    transition:.35s;
+}
+
+.plan:hover{
+    transform:translateY(-8px);
+
+    border-color:#6366f1;
+
+    box-shadow:
+    0 15px 40px
+    rgba(99,102,241,.18);
+}
+
+.popular{
+    border-color:#38bdf8;
+}
+
+.label{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    margin-bottom:15px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #2563eb
+    );
+}
+
+.plan h2{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#64748b;
+    line-height:1.5;
+}
+
+.price{
+    color:#a78bfa;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+}
+
+.price small{
+    color:#64748b;
+    font-size:14px;
+}
+
+.features{
+    list-style:none;
+    margin-bottom:25px;
+}
+
+.features li{
+    padding:10px 0;
+
+    color:#cbd5e1;
+
+    border-bottom:
+    1px solid #1b233a;
+}
+
+/* BUTTON */
+.btn{
+    display:block;
+
+    text-align:center;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px
+    rgba(79,70,229,.25);
+}
+
+/* FEATURES */
+.bot-features{
+    margin-top:70px;
+}
+
+.bot-features h2{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:30px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:18px;
+}
+
+.feature{
+    padding:25px;
+
+    border-radius:15px;
+
+    background:#0e1426;
+
+    border:1px solid #202a47;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+    border-color:#7c3aed;
+}
+
+.feature-icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.feature h3{
+    margin-bottom:9px;
+}
+
+.feature p{
+    color:#94a3b8;
+    line-height:1.6;
+}
+
+/* INFO */
+.info{
+    margin-top:60px;
+
+    text-align:center;
+
+    padding:45px 30px;
+
+    border-radius:18px;
+
+    background:#0e1426;
+
+    border:1px solid #202a47;
+}
+
+.info h2{
+    margin-bottom:15px;
+}
+
+.info p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+    line-height:1.7;
+}
+
+.info .btn{
+    max-width:220px;
+    margin:25px auto 0;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#64748b;
+
+    background:#050711;
+
+    border-top:
+    1px solid #1c2338;
+}
+
+/* MOBILE */
+@media(max-width:750px){
+
+    nav{
+        display:none;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .hero{
+        padding:75px 5% 60px;
+    }
+
+    .container{
+        width:92%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="hosting.html">
+            Game Hosting
+        </a>
+
+        <a href="bot-hosting.html">
+            Bot Hosting
+        </a>
+
+        <a href="web-hosting.html">
+            Web Hosting
+        </a>
+
+        <a href="vps.html">
+            VPS
+        </a>
+
+        <a href="pricing.html">
+            Pricing
+        </a>
+
+        <a href="support.html">
+            Support
+        </a>
+
+    </nav>
+
+    <a href="login.html" class="login">
+        Login
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-icon">
+        🤖
+    </div>
+
+    <h1>
+        Bot <span>Hosting</span>
+    </h1>
+
+    <p>
+        Keep your Discord and other application bots
+        online with reliable hosting, simple management
+        and flexible resources.
+    </p>
+
+</section>
+
+
+<!-- PLANS -->
+
+<div class="container">
+
+    <div class="plans">
+
+
+        <!-- STARTER -->
+
+        <div class="plan">
+
+            <h2>Bot Starter</h2>
+
+            <p class="description">
+                Perfect for small bots.
+            </p>
+
+            <div class="price">
+                ₹49
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 512 MB RAM</li>
+
+                <li>✓ 1 vCPU</li>
+
+                <li>✓ 2 GB SSD</li>
+
+                <li>✓ Node.js Support</li>
+
+                <li>✓ Python Support</li>
+
+                <li>✓ Bot Panel</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=bot-starter"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- PRO -->
+
+        <div class="plan popular">
+
+            <div class="label">
+                MOST POPULAR
+            </div>
+
+            <h2>Bot Pro</h2>
+
+            <p class="description">
+                For active and growing bots.
+            </p>
+
+            <div class="price">
+                ₹99
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 2 GB RAM</li>
+
+                <li>✓ 1 vCPU</li>
+
+                <li>✓ 10 GB SSD</li>
+
+                <li>✓ Node.js Support</li>
+
+                <li>✓ Python Support</li>
+
+                <li>✓ Automatic Restart</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=bot-pro"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+
+        <div class="plan">
+
+            <h2>Bot Premium</h2>
+
+            <p class="description">
+                For demanding applications.
+            </p>
+
+            <div class="price">
+                ₹199
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 4 GB RAM</li>
+
+                <li>✓ 2 vCPU</li>
+
+                <li>✓ 20 GB SSD</li>
+
+                <li>✓ Node.js Support</li>
+
+                <li>✓ Python Support</li>
+
+                <li>✓ Advanced Panel</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=bot-premium"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOT FEATURES -->
+
+    <section class="bot-features">
+
+        <h2>
+            Bot Hosting Features
+        </h2>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Fast Deployment
+                </h3>
+
+                <p>
+                    Deploy your bot quickly using
+                    an easy-to-use hosting panel.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔄
+                </div>
+
+                <h3>
+                    Auto Restart
+                </h3>
+
+                <p>
+                    Keep your application running
+                    with automatic restart options.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Protection
+                </h3>
+
+                <p>
+                    Modern infrastructure designed
+                    for reliable bot hosting.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobile Management
+                </h3>
+
+                <p>
+                    Manage your bot from your
+                    phone, tablet or computer.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOM PLAN -->
+
+    <div class="info">
+
+        <h2>
+            Need a Custom Bot Plan?
+        </h2>
+
+        <p>
+            Agar aapko extra RAM, CPU, storage ya
+            custom configuration chahiye, TSA Web
+            support team se contact karein.
+        </p>
+
+        <a
+            href="support.html"
+            class="btn"
+        >
+            Contact Support
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 TSA Web —
+    All Rights Reserved.
+
+</footer>
+
+</body>
+</html>

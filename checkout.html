@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Checkout</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#070914;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(7,9,20,.96);
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.home{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid #334155;
+    border-radius:9px;
+}
+
+.home:hover{
+    color:#38bdf8;
+    border-color:#38bdf8;
+}
+
+/* PAGE */
+
+.container{
+    width:92%;
+    max-width:1050px;
+    margin:50px auto 80px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.title h1{
+    font-size:clamp(35px,6vw,55px);
+    margin-bottom:12px;
+}
+
+.title h1 span{
+    background:linear-gradient(90deg,#8b5cf6,#38bdf8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.title p{
+    color:#94a3b8;
+}
+
+/* GRID */
+
+.checkout{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:25px;
+}
+
+/* CARD */
+
+.card{
+    padding:30px;
+    border-radius:18px;
+
+    background:linear-gradient(145deg,#11172b,#0b1020);
+
+    border:1px solid #27304e;
+}
+
+.card h2{
+    margin-bottom:25px;
+}
+
+/* INPUT */
+
+.group{
+    margin-bottom:18px;
+}
+
+.group label{
+    display:block;
+    color:#cbd5e1;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.group input,
+.group textarea,
+.group select{
+    width:100%;
+
+    padding:13px 14px;
+
+    border-radius:9px;
+
+    border:1px solid #334155;
+
+    outline:none;
+
+    background:#080d1c;
+
+    color:#fff;
+
+    font-size:15px;
+}
+
+.group input:focus,
+.group textarea:focus,
+.group select:focus{
+    border-color:#6366f1;
+
+    box-shadow:
+    0 0 0 3px rgba(99,102,241,.12);
+}
+
+textarea{
+    resize:vertical;
+    min-height:90px;
+}
+
+/* SUMMARY */
+
+.summary{
+    position:sticky;
+    top:25px;
+    height:max-content;
+}
+
+.plan-box{
+    padding:20px;
+
+    border-radius:13px;
+
+    background:#080d1c;
+
+    border:1px solid #202a47;
+
+    margin-bottom:20px;
+}
+
+.plan-name{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.plan-type{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.price{
+    font-size:35px;
+    font-weight:bold;
+    color:#a78bfa;
+    margin:18px 0;
+}
+
+.price small{
+    font-size:14px;
+    color:#64748b;
+}
+
+.line{
+    display:flex;
+    justify-content:space-between;
+
+    padding:13px 0;
+
+    color:#94a3b8;
+
+    border-bottom:1px solid #202a47;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+
+    padding-top:18px;
+
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* BUTTON */
+
+.order-btn{
+    width:100%;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    transition:.3s;
+}
+
+.order-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px rgba(79,70,229,.3);
+}
+
+/* NOTICE */
+
+.notice{
+    margin-top:18px;
+
+    padding:13px;
+
+    border-radius:9px;
+
+    color:#94a3b8;
+
+    background:#0b1122;
+
+    border:1px solid #202a47;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+/* MESSAGE */
+
+#message{
+    display:none;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    background:#101a32;
+
+    color:#93c5fd;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    color:#64748b;
+
+    background:#050711;
+
+    border-top:1px solid #1c2338;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .checkout{
+        grid-template-columns:1fr;
+    }
+
+    .summary{
+        position:static;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .container{
+        width:92%;
+        margin-top:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="pricing.html" class="home">
+        ← Pricing
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="title">
+
+        <h1>
+            Complete Your <span>Order</span>
+        </h1>
+
+        <p>
+            Enter your details and review your selected plan.
+        </p>
+
+    </div>
+
+
+    <div class="checkout">
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="card">
+
+            <h2>
+                👤 Customer Details
+            </h2>
+
+            <form id="checkoutForm">
+
+                <div class="group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="group">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="group">
+
+                    <label>
+                        Select Billing Cycle
+                    </label>
+
+                    <select id="cycle">
+
+                        <option value="monthly">
+                            Monthly
+                        </option>
+
+                        <option value="yearly">
+                            Yearly
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="group">
+
+                    <label>
+                        Additional Note
+                    </label>
+
+                    <textarea
+                        id="note"
+                        placeholder="Any additional requirements?"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="order-btn"
+                >
+                    Confirm Order
+                </button>
+
+            </form>
+
+
+            <div id="message"></div>
+
+        </div>
+
+
+        <!-- ORDER SUMMARY -->
+
+        <div class="card summary">
+
+            <h2>
+                🧾 Order Summary
+            </h2>
+
+
+            <div class="plan-box">
+
+                <div
+                    class="plan-name"
+                    id="planName"
+                >
+                    Selected Plan
+                </div>
+
+                <div
+                    class="plan-type"
+                    id="planType"
+                >
+                    TSA Web Hosting
+                </div>
+
+                <div
+                    class="price"
+                    id="planPrice"
+                >
+                    ₹0
+                    <small>/month</small>
+                </div>
+
+            </div>
+
+
+            <div class="line">
+
+                <span>
+                    Plan
+                </span>
+
+                <span id="summaryPlan">
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <span>
+                    Billing
+                </span>
+
+                <span id="summaryCycle">
+                    Monthly
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <span>
+                    Setup Fee
+                </span>
+
+                <span>
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="totalPrice">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="notice">
+
+                🔒 Your information is used only
+                for processing this demo order.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 TSA Web — All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+/* PLAN DATA */
+
+const plans = {
+
+    "game-starter":{
+        name:"Game Hosting Starter",
+        type:"Game Hosting",
+        price:99
+    },
+
+    "game-pro":{
+        name:"Game Hosting Pro",
+        type:"Game Hosting",
+        price:249
+    },
+
+    "game-premium":{
+        name:"Game Hosting Premium",
+        type:"Game Hosting",
+        price:499
+    },
+
+    "bot-starter":{
+        name:"Bot Hosting Starter",
+        type:"Bot Hosting",
+        price:49
+    },
+
+    "bot-pro":{
+        name:"Bot Hosting Pro",
+        type:"Bot Hosting",
+        price:99
+    },
+
+    "bot-premium":{
+        name:"Bot Hosting Premium",
+        type:"Bot Hosting",
+        price:199
+    },
+
+    "vps-starter":{
+        name:"VPS Starter",
+        type:"VPS Hosting",
+        price:299
+    },
+
+    "vps-pro":{
+        name:"VPS Pro",
+        type:"VPS Hosting",
+        price:599
+    },
+
+    "vps-premium":{
+        name:"VPS Premium",
+        type:"VPS Hosting",
+        price:999
+    },
+
+    "paas-starter":{
+        name:"PaaS Starter",
+        type:"PaaS",
+        price:149
+    },
+
+    "paas-pro":{
+        name:"PaaS Pro",
+        type:"PaaS",
+        price:299
+    },
+
+    "paas-business":{
+        name:"PaaS Business",
+        type:"PaaS",
+        price:599
+    },
+
+    "mail-basic":{
+        name:"Mail Basic",
+        type:"Mail Hosting",
+        price:99
+    },
+
+    "mail-business":{
+        name:"Mail Business",
+        type:"Mail Hosting",
+        price:249
+    },
+
+    "mail-premium":{
+        name:"Mail Premium",
+        type:"Mail Hosting",
+        price:499
+    }
+
+};
+
+
+/* GET PLAN FROM URL */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const selectedPlan =
+    params.get("plan");
+
+
+const plan =
+    plans[selectedPlan] || {
+
+        name:"Custom Plan",
+        type:"TSA Web Hosting",
+        price:0
+
+    };
+
+
+/* SHOW PLAN */
+
+document.getElementById("planName")
+    .textContent = plan.name;
+
+document.getElementById("planType")
+    .textContent = plan.type;
+
+document.getElementById("planPrice")
+    .innerHTML =
+        "₹" + plan.price +
+        ' <small>/month</small>';
+
+document.getElementById("summaryPlan")
+    .textContent = plan.name;
+
+document.getElementById("totalPrice")
+    .textContent =
+        "₹" + plan.price;
+
+
+/* BILLING */
+
+const cycle =
+    document.getElementById("cycle");
+
+const summaryCycle =
+    document.getElementById("summaryCycle");
+
+const totalPrice =
+    document.getElementById("totalPrice");
+
+
+cycle.addEventListener("change",function(){
+
+    summaryCycle.textContent =
+        cycle.value === "yearly"
+        ? "Yearly"
+        : "Monthly";
+
+    /*
+       Demo yearly calculation:
+       10 months price instead of 12.
+    */
+
+    if(cycle.value === "yearly"){
+
+        const yearly =
+            plan.price * 10;
+
+        totalPrice.textContent =
+            "₹" + yearly;
+
+    }else{
+
+        totalPrice.textContent =
+            "₹" + plan.price;
+
+    }
+
+});
+
+
+/* FORM */
+
+document.getElementById("checkoutForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const message =
+        document.getElementById("message");
+
+    message.style.display = "block";
+
+    message.textContent =
+        "Order details submitted successfully!";
+
+});
+
+
+</script>
+
+</body>
+</html>

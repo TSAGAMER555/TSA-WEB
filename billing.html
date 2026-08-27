@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Billing</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+    min-height:100vh;
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6%;
+    background:#080b18;
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.back{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid #334155;
+    border-radius:9px;
+}
+
+.back:hover{
+    color:#38bdf8;
+    border-color:#38bdf8;
+}
+
+.container{
+    width:92%;
+    max-width:1050px;
+    margin:45px auto 80px;
+}
+
+.header{
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.header p{
+    color:#94a3b8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.card{
+    padding:27px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#11172b,#0b1020);
+    border:1px solid #27304e;
+}
+
+.card h2{
+    margin-bottom:22px;
+}
+
+.balance{
+    font-size:38px;
+    font-weight:bold;
+    margin-bottom:8px;
+    background:linear-gradient(90deg,#8b5cf6,#38bdf8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.balance-text{
+    color:#64748b;
+}
+
+.payment{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid #202a47;
+}
+
+.payment:last-child{
+    border-bottom:0;
+}
+
+.payment-name{
+    font-weight:bold;
+}
+
+.payment-date{
+    color:#64748b;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.amount{
+    color:#cbd5e1;
+    font-weight:bold;
+}
+
+.status{
+    display:inline-block;
+    margin-top:5px;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.paid{
+    color:#4ade80;
+    background:#0f2a22;
+}
+
+.pending{
+    color:#facc15;
+    background:#2a240e;
+}
+
+.empty{
+    text-align:center;
+    padding:35px 10px;
+    color:#64748b;
+}
+
+.action{
+    display:block;
+    margin-top:18px;
+    padding:13px;
+    text-align:center;
+    text-decoration:none;
+    border-radius:9px;
+    color:#fff;
+    font-weight:bold;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    background:#050711;
+    border-top:1px solid #1c2338;
+}
+
+@media(max-width:750px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>
+            Billing & Payments
+        </h1>
+
+        <p>
+            Apne billing details aur payment history manage karein.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <section class="card">
+
+            <h2>
+                Current Balance
+            </h2>
+
+            <div class="balance">
+                ₹0.00
+            </div>
+
+            <div class="balance-text">
+                Available account balance
+            </div>
+
+            <a
+                href="pricing.html"
+                class="action"
+            >
+                Purchase a Service
+            </a>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                Payment Methods
+            </h2>
+
+            <div class="empty">
+                💳 No payment methods saved.
+                <br>
+                Payment checkout ke time select kiya ja sakta hai.
+            </div>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                Recent Payments
+            </h2>
+
+            <div class="empty">
+                🧾 No payment history available.
+            </div>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                Billing Help
+            </h2>
+
+            <p style="color:#94a3b8;line-height:1.7;">
+                Payment ya billing se related problem
+                hone par TSA Web support team ko contact karein.
+            </p>
+
+            <a
+                href="tickets.html"
+                class="action"
+            >
+                Contact Support
+            </a>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 TSA Web — All Rights Reserved.
+</footer>
+
+</body>
+</html>

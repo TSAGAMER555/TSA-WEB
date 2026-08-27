@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:#070914;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(7,9,20,.96);
+
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.home{
+    color:#cbd5e1;
+    text-decoration:none;
+
+    padding:10px 16px;
+
+    border:1px solid #334155;
+
+    border-radius:9px;
+
+    transition:.3s;
+}
+
+.home:hover{
+    color:#38bdf8;
+    border-color:#38bdf8;
+}
+
+/* LOGIN AREA */
+
+.login-wrapper{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:50px 20px;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        rgba(124,58,237,.22),
+        transparent 45%
+    );
+}
+
+.login-card{
+    width:100%;
+    max-width:430px;
+
+    padding:38px 32px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #11172b,
+        #0b1020
+    );
+
+    border:1px solid #27304e;
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.35);
+}
+
+.icon{
+    width:70px;
+    height:70px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    font-size:32px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+}
+
+.login-card h1{
+    text-align:center;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+.form-group input{
+    width:100%;
+
+    padding:14px 15px;
+
+    border-radius:10px;
+
+    border:1px solid #334155;
+
+    outline:none;
+
+    background:#080d1c;
+
+    color:#fff;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.form-group input:focus{
+    border-color:#6366f1;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(99,102,241,.12);
+}
+
+.password-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:8px;
+}
+
+.forgot{
+    color:#60a5fa;
+    font-size:13px;
+    text-decoration:none;
+}
+
+.forgot:hover{
+    text-decoration:underline;
+}
+
+/* BUTTON */
+
+.login-btn{
+    width:100%;
+
+    border:0;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px
+    rgba(79,70,229,.3);
+}
+
+/* DIVIDER */
+
+.divider{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin:25px 0;
+
+    color:#64748b;
+
+    font-size:13px;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#202a47;
+}
+
+/* REGISTER */
+
+.register{
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:14px;
+}
+
+.register a{
+    color:#38bdf8;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.register a:hover{
+    text-decoration:underline;
+}
+
+/* MESSAGE */
+
+#message{
+    display:none;
+
+    margin-top:18px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    background:#101a32;
+
+    color:#93c5fd;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:25px;
+
+    color:#64748b;
+
+    background:#050711;
+
+    border-top:1px solid #1c2338;
+}
+
+@media(max-width:500px){
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .login-card{
+        padding:32px 22px;
+    }
+
+    .login-card h1{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="index.html" class="home">
+        ← Home
+    </a>
+
+</header>
+
+
+<!-- LOGIN -->
+
+<main class="login-wrapper">
+
+    <div class="login-card">
+
+        <div class="icon">
+            🔐
+        </div>
+
+        <h1>
+            Welcome Back
+        </h1>
+
+        <p class="subtitle">
+            Login to your TSA Web account
+            to manage your services.
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="password-row">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <a href="forgot-password.html"
+                       class="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Login
+            </button>
+
+        </form>
+
+
+        <div id="message"></div>
+
+
+        <div class="divider">
+            OR
+        </div>
+
+
+        <div class="register">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 TSA Web — All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+const form = document.getElementById("loginForm");
+
+const message = document.getElementById("message");
+
+form.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    if(!email || !password){
+
+        message.style.display = "block";
+
+        message.textContent =
+            "Please enter your email and password.";
+
+        return;
+    }
+
+    /*
+       Front-end demo only.
+
+       Real login ke liye backend/API
+       authentication connect karna hoga.
+    */
+
+    message.style.display = "block";
+
+    message.textContent =
+        "Login form submitted successfully.";
+
+});
+
+</script>
+
+</body>
+</html>
+
+✅ File #9 → "login.html"
+
+ध्यान रहे: यह front-end login page है। Real account login ke liye backend/database authentication alag se connect karna padega.
+
+Next #10 → "register.html".

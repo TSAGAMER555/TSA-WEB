@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI Payment</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#dff4ff);
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  padding:28px 22px;
+  text-align:center;
+  background:#fff;
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+}
+
+.logo{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+h1{
+  margin:0;
+  font-size:29px;
+}
+
+.subtitle{
+  color:#777;
+  margin:8px 0 22px;
+}
+
+.qr-box{
+  width:260px;
+  height:260px;
+  margin:auto;
+  padding:10px;
+  background:white;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+#qrcode{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#qrcode img{
+  width:100%;
+  height:100%;
+}
+
+.upi-box{
+  margin-top:20px;
+  padding:15px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#fff0f6,#eefaff);
+}
+
+.label{
+  color:#888;
+  font-size:12px;
+}
+
+.upi{
+  margin-top:5px;
+  font-weight:bold;
+  font-size:17px;
+  word-break:break-all;
+}
+
+button{
+  width:100%;
+  border:0;
+  padding:15px;
+  margin-top:13px;
+  border-radius:15px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.copy{
+  background:#222;
+  color:white;
+}
+
+.pay,.submit{
+  background:linear-gradient(135deg,#ff8fba,#78d4ff);
+  color:white;
+}
+
+.utr-section{
+  margin-top:25px;
+  padding-top:22px;
+  border-top:1px solid #eee;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:2px solid #eee;
+  border-radius:15px;
+  outline:none;
+  text-align:center;
+  font-size:16px;
+}
+
+.status{
+  display:none;
+  margin-top:15px;
+  padding:14px;
+  border-radius:14px;
+  font-size:14px;
+}
+
+.success{
+  display:block;
+  background:#e9fff3;
+  color:#15834b;
+}
+
+.error{
+  display:block;
+  background:#fff0f0;
+  color:#d33;
+}
+
+.note{
+  margin-top:16px;
+  font-size:11px;
+  color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="logo">💳</div>
+
+  <h1>UPI Payment</h1>
+
+  <div class="subtitle">
+    Scan & Pay using any UPI app
+  </div>
+
+  <!-- QR CODE WILL APPEAR HERE -->
+  <div class="qr-box">
+    <div id="qrcode"></div>
+  </div>
+
+  <div class="upi-box">
+    <div class="label">UPI ID</div>
+    <div class="upi">sumit696969@fam</div>
+  </div>
+
+  <button class="copy" onclick="copyUPI()">
+    📋 Copy UPI ID
+  </button>
+
+  <button class="pay" onclick="payNow()">
+    💰 Pay Now
+  </button>
+
+  <div class="utr-section">
+
+    <h2>Enter UTR Number</h2>
+
+    <p class="subtitle">
+      After payment, enter your UTR / Transaction ID.
+    </p>
+
+    <input
+      type="text"
+      id="utr"
+      placeholder="Enter UTR Number"
+      maxlength="40"
+    >
+
+    <button class="submit" onclick="submitUTR()">
+      ✅ Submit Payment
+    </button>
+
+    <div id="status" class="status"></div>
+
+  </div>
+
+  <div class="note">
+    UTR submission does not automatically confirm payment.
+  </div>
+
+</div>
+
+<!-- QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+const UPI_ID = "sumit696969@fam";
+
+const UPI_LINK =
+  "upi://pay?pa=" +
+  encodeURIComponent(UPI_ID) +
+  "&pn=" +
+  encodeURIComponent("Sumit");
+
+
+// GENERATE QR CODE
+new QRCode(document.getElementById("qrcode"), {
+  text: UPI_LINK,
+  width: 235,
+  height: 235,
+  correctLevel: QRCode.CorrectLevel.H
+});
+
+
+// COPY UPI
+function copyUPI(){
+
+  navigator.clipboard.writeText(UPI_ID);
+
+  showStatus(
+    "✓ UPI ID copied successfully!",
+    "success"
+  );
+}
+
+
+// PAY NOW
+function payNow(){
+
+  window.location.href = UPI_LINK;
+
+}
+
+
+// SUBMIT UTR
+function submitUTR(){
+
+  const utr =
+    document.getElementById("utr").value.trim();
+
+  if(utr.length < 6){
+
+    showStatus(
+      "⚠️ Please enter a valid UTR number.",
+      "error"
+    );
+
+    return;
+  }
+
+  showStatus(
+    "✓ Payment details submitted for verification.",
+    "success"
+  );
+}
+
+
+// STATUS
+function showStatus(message,type){
+
+  const status =
+    document.getElementById("status");
+
+  status.innerText = message;
+  status.className = "status " + type;
+
+}
+
+</script>
+
+</body>
+</html>

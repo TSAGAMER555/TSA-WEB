@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSA Web - Notifications</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+    min-height:100vh;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 6%;
+    background:#080b18;
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.back{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid #334155;
+    border-radius:9px;
+}
+
+.container{
+    width:92%;
+    max-width:850px;
+    margin:45px auto 80px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:28px;
+}
+
+.header h1{
+    font-size:34px;
+}
+
+.header p{
+    color:#94a3b8;
+    margin-top:7px;
+}
+
+.clear{
+    padding:11px 15px;
+    border:1px solid #334155;
+    border-radius:9px;
+    background:#11172b;
+    color:#cbd5e1;
+    cursor:pointer;
+}
+
+.card{
+    padding:8px 22px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#11172b,#0b1020);
+    border:1px solid #27304e;
+}
+
+.notification{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    padding:20px 0;
+    border-bottom:1px solid #202a47;
+}
+
+.notification:last-child{
+    border-bottom:0;
+}
+
+.icon{
+    width:42px;
+    height:42px;
+    flex-shrink:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
+    background:#171d36;
+    font-size:20px;
+}
+
+.content{
+    flex:1;
+}
+
+.content h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.content p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.time{
+    color:#64748b;
+    font-size:12px;
+    margin-top:7px;
+}
+
+.unread{
+    position:relative;
+}
+
+.unread:before{
+    content:"";
+    position:absolute;
+    left:-22px;
+    top:25px;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#8b5cf6;
+}
+
+.empty{
+    text-align:center;
+    padding:60px 20px;
+    color:#64748b;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    background:#050711;
+    border-top:1px solid #1c2338;
+}
+
+@media(max-width:600px){
+
+    .header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .notification{
+        gap:12px;
+    }
+
+    .card{
+        padding:8px 16px;
+    }
+
+    .unread:before{
+        left:-16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="header">
+
+        <div>
+            <h1>Notifications</h1>
+            <p>Account aur services ke latest updates.</p>
+        </div>
+
+        <button
+            class="clear"
+            onclick="clearNotifications()"
+        >
+            Mark All Read
+        </button>
+
+    </div>
+
+
+    <div class="card" id="notifications">
+
+
+        <div class="notification unread">
+
+            <div class="icon">
+                🎉
+            </div>
+
+            <div class="content">
+
+                <h3>
+                    Welcome to TSA Web
+                </h3>
+
+                <p>
+                    TSA Web hosting dashboard mein aapka welcome hai.
+                </p>
+
+                <div class="time">
+                    Just now
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification unread">
+
+            <div class="icon">
+                🔔
+            </div>
+
+            <div class="content">
+
+                <h3>
+                    Account Update
+                </h3>
+
+                <p>
+                    Apni profile aur security settings ko updated rakhein.
+                </p>
+
+                <div class="time">
+                    Today
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification">
+
+            <div class="icon">
+                💳
+            </div>
+
+            <div class="content">
+
+                <h3>
+                    Billing Information
+                </h3>
+
+                <p>
+                    Payment aur invoice details Billing section mein available hain.
+                </p>
+
+                <div class="time">
+                    Earlier
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification">
+
+            <div class="icon">
+                🖥️
+            </div>
+
+            <div class="content">
+
+                <h3>
+                    Server Updates
+                </h3>
+
+                <p>
+                    Server status aur management ke liye My Servers section check karein.
+                </p>
+
+                <div class="time">
+                    Earlier
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 TSA Web — All Rights Reserved.
+</footer>
+
+
+<script>
+
+function clearNotifications(){
+
+    const notifications =
+        document.querySelectorAll(".notification");
+
+    notifications.forEach(function(item){
+
+        item.classList.remove("unread");
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

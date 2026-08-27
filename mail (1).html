@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Mail Hosting</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(7,9,20,.95);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.login{
+    color:#fff;
+    text-decoration:none;
+    border:1px solid #334155;
+    padding:11px 18px;
+    border-radius:9px;
+}
+
+.login:hover{
+    border-color:#6366f1;
+    color:#60a5fa;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:100px 6% 80px;
+
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(56,189,248,.20),
+        transparent 45%
+    );
+}
+
+.hero-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #38bdf8
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+
+    color:#94a3b8;
+    line-height:1.7;
+    font-size:17px;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding-bottom:90px;
+}
+
+/* PLANS */
+.plans{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+}
+
+.plan{
+    padding:30px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #11172b,
+        #0b1020
+    );
+
+    border:1px solid #27304e;
+
+    transition:.35s;
+}
+
+.plan:hover{
+    transform:translateY(-8px);
+
+    border-color:#6366f1;
+
+    box-shadow:
+    0 15px 40px
+    rgba(99,102,241,.18);
+}
+
+.popular{
+    border-color:#38bdf8;
+}
+
+.label{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    margin-bottom:15px;
+
+    font-size:12px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #2563eb
+    );
+}
+
+.plan h2{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#64748b;
+    line-height:1.5;
+}
+
+.price{
+    color:#a78bfa;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+}
+
+.price small{
+    color:#64748b;
+    font-size:14px;
+}
+
+.features{
+    list-style:none;
+    margin-bottom:25px;
+}
+
+.features li{
+    padding:10px 0;
+
+    color:#cbd5e1;
+
+    border-bottom:
+    1px solid #1b233a;
+}
+
+/* BUTTON */
+.btn{
+    display:block;
+
+    text-align:center;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px
+    rgba(79,70,229,.25);
+}
+
+/* FEATURES */
+.mail-features{
+    margin-top:75px;
+}
+
+.mail-features h2{
+    text-align:center;
+
+    font-size:36px;
+
+    margin-bottom:35px;
+}
+
+.feature-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.feature{
+    padding:28px;
+
+    border-radius:16px;
+
+    background:#0e1426;
+
+    border:1px solid #202a47;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+
+    border-color:#8b5cf6;
+}
+
+.feature-icon{
+    font-size:32px;
+
+    margin-bottom:15px;
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#94a3b8;
+
+    line-height:1.6;
+}
+
+/* INFO */
+.info{
+    margin-top:60px;
+
+    text-align:center;
+
+    padding:45px 30px;
+
+    border-radius:18px;
+
+    background:#0e1426;
+
+    border:1px solid #202a47;
+}
+
+.info h2{
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.info p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+    line-height:1.7;
+}
+
+.info .btn{
+    max-width:220px;
+
+    margin:25px auto 0;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#64748b;
+
+    background:#050711;
+
+    border-top:1px solid #1c2338;
+}
+
+/* MOBILE */
+@media(max-width:750px){
+
+    nav{
+        display:none;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .hero{
+        padding:75px 5% 60px;
+    }
+
+    .container{
+        width:92%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="hosting.html">
+            Game Hosting
+        </a>
+
+        <a href="bot-hosting.html">
+            Bot Hosting
+        </a>
+
+        <a href="web-hosting.html">
+            Web Hosting
+        </a>
+
+        <a href="vps.html">
+            VPS
+        </a>
+
+        <a href="paas.html">
+            PaaS
+        </a>
+
+        <a href="mail.html">
+            Mail
+        </a>
+
+        <a href="pricing.html">
+            Pricing
+        </a>
+
+    </nav>
+
+    <a href="login.html" class="login">
+        Login
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-icon">
+        📧
+    </div>
+
+    <h1>
+        Mail <span>Hosting</span>
+    </h1>
+
+    <p>
+        Professional email hosting for your domain.
+        Create custom business email addresses and
+        manage your mail services easily.
+    </p>
+
+</section>
+
+
+<!-- PLANS -->
+
+<div class="container">
+
+    <div class="plans">
+
+
+        <!-- BASIC -->
+
+        <div class="plan">
+
+            <h2>Mail Basic</h2>
+
+            <p class="description">
+                Perfect for personal projects.
+            </p>
+
+            <div class="price">
+                ₹99
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 5 Mailboxes</li>
+
+                <li>✓ 5 GB Storage</li>
+
+                <li>✓ Custom Domain</li>
+
+                <li>✓ Webmail Access</li>
+
+                <li>✓ Spam Protection</li>
+
+                <li>✓ SSL Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=mail-basic"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- BUSINESS -->
+
+        <div class="plan popular">
+
+            <div class="label">
+                MOST POPULAR
+            </div>
+
+            <h2>Mail Business</h2>
+
+            <p class="description">
+                For businesses and teams.
+            </p>
+
+            <div class="price">
+                ₹249
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 20 Mailboxes</li>
+
+                <li>✓ 25 GB Storage</li>
+
+                <li>✓ Custom Domain</li>
+
+                <li>✓ Webmail Access</li>
+
+                <li>✓ Spam Protection</li>
+
+                <li>✓ SSL Support</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=mail-business"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+
+        <div class="plan">
+
+            <h2>Mail Premium</h2>
+
+            <p class="description">
+                For larger organizations.
+            </p>
+
+            <div class="price">
+                ₹499
+                <small>/month</small>
+            </div>
+
+            <ul class="features">
+
+                <li>✓ 50 Mailboxes</li>
+
+                <li>✓ 100 GB Storage</li>
+
+                <li>✓ Custom Domain</li>
+
+                <li>✓ Webmail Access</li>
+
+                <li>✓ Advanced Spam Protection</li>
+
+                <li>✓ SSL Support</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <a
+                href="checkout.html?plan=mail-premium"
+                class="btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <section class="mail-features">
+
+        <h2>
+            Mail Hosting Features
+        </h2>
+
+        <div class="feature-grid">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📬
+                </div>
+
+                <h3>
+                    Custom Email
+                </h3>
+
+                <p>
+                    Use professional email addresses
+                    with your own domain.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Spam Protection
+                </h3>
+
+                <p>
+                    Protection features help reduce
+                    unwanted messages.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Secure Access
+                </h3>
+
+                <p>
+                    Access your mailbox using secure
+                    webmail and supported clients.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Manage your email from phone,
+                    tablet or computer.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOM PLAN -->
+
+    <div class="info">
+
+        <h2>
+            Need Custom Mail Hosting?
+        </h2>
+
+        <p>
+            Agar aapko zyada mailboxes, storage,
+            custom configuration ya business setup
+            chahiye, TSA Web support se contact karein.
+        </p>
+
+        <a
+            href="support.html"
+            class="btn"
+        >
+            Contact Support
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 TSA Web —
+    All Rights Reserved.
+
+</footer>
+
+</body>
+</html>

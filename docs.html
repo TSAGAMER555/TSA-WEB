@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TSA Web - Documentation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070914;
+    color:#fff;
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6%;
+    background:rgba(7,9,20,.96);
+    border-bottom:1px solid #252b4a;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#8b5cf6;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.home{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid #334155;
+    border-radius:9px;
+}
+
+.home:hover{
+    color:#38bdf8;
+    border-color:#38bdf8;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px 55px;
+    background:
+    radial-gradient(
+        circle at 50% 10%,
+        rgba(124,58,237,.25),
+        transparent 45%
+    );
+}
+
+.hero h1{
+    font-size:clamp(40px,7vw,65px);
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#8b5cf6,#38bdf8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#94a3b8;
+    line-height:1.7;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:35px auto 80px;
+}
+
+.search{
+    margin-bottom:30px;
+}
+
+.search input{
+    width:100%;
+    padding:15px 18px;
+    border-radius:11px;
+    border:1px solid #334155;
+    outline:none;
+    background:#0b1020;
+    color:#fff;
+    font-size:15px;
+}
+
+.search input:focus{
+    border-color:#6366f1;
+}
+
+.docs{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:25px;
+}
+
+.sidebar{
+    height:max-content;
+    padding:20px;
+    background:#0e1426;
+    border:1px solid #202a47;
+    border-radius:16px;
+}
+
+.sidebar h3{
+    margin-bottom:15px;
+}
+
+.sidebar a{
+    display:block;
+    padding:11px;
+    color:#94a3b8;
+    text-decoration:none;
+    border-radius:8px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover{
+    color:#fff;
+    background:#18213b;
+}
+
+.content{
+    display:grid;
+    gap:18px;
+}
+
+.doc-card{
+    padding:27px;
+    background:linear-gradient(145deg,#11172b,#0b1020);
+    border:1px solid #27304e;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.doc-card:hover{
+    border-color:#6366f1;
+    transform:translateY(-3px);
+}
+
+.doc-icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.doc-card h2{
+    margin-bottom:10px;
+}
+
+.doc-card p{
+    color:#94a3b8;
+    line-height:1.7;
+}
+
+.doc-card a{
+    display:inline-block;
+    margin-top:15px;
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.code{
+    margin-top:15px;
+    padding:15px;
+    overflow-x:auto;
+    border-radius:9px;
+    background:#050711;
+    border:1px solid #202a47;
+    color:#a78bfa;
+    font-family:monospace;
+    font-size:13px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    background:#050711;
+    border-top:1px solid #1c2338;
+}
+
+@media(max-width:750px){
+
+    .docs{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .navbar{
+        padding:16px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        TSA <span>Web</span>
+    </div>
+
+    <a href="index.html" class="home">
+        ← Home
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        TSA Web <span>Docs</span>
+    </h1>
+
+    <p>
+        Hosting services aur platform ko samajhne
+        ke liye simple documentation.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search documentation..."
+        >
+
+    </div>
+
+
+    <div class="docs">
+
+
+        <aside class="sidebar">
+
+            <h3>
+                Documentation
+            </h3>
+
+            <a href="#getting-started">
+                Getting Started
+            </a>
+
+            <a href="#game">
+                Game Hosting
+            </a>
+
+            <a href="#bot">
+                Bot Hosting
+            </a>
+
+            <a href="#vps">
+                VPS Hosting
+            </a>
+
+            <a href="#paas">
+                PaaS
+            </a>
+
+            <a href="#billing">
+                Billing
+            </a>
+
+        </aside>
+
+
+        <main class="content">
+
+
+            <article
+                class="doc-card"
+                id="getting-started"
+            >
+
+                <div class="doc-icon">
+                    🚀
+                </div>
+
+                <h2>
+                    Getting Started
+                </h2>
+
+                <p>
+                    TSA Web par service start karne
+                    ke liye pehle account create karein,
+                    phir apna required hosting plan
+                    select karein.
+                </p>
+
+                <a href="register.html">
+                    Create Account →
+                </a>
+
+            </article>
+
+
+            <article
+                class="doc-card"
+                id="game"
+            >
+
+                <div class="doc-icon">
+                    🎮
+                </div>
+
+                <h2>
+                    Game Hosting
+                </h2>
+
+                <p>
+                    Game hosting plans ke through
+                    aap apne supported game server
+                    ko manage kar sakte hain.
+                </p>
+
+                <div class="code">
+                    Server → Game Panel → Start
+                </div>
+
+            </article>
+
+
+            <article
+                class="doc-card"
+                id="bot"
+            >
+
+                <div class="doc-icon">
+                    🤖
+                </div>
+
+                <h2>
+                    Bot Hosting
+                </h2>
+
+                <p>
+                    Bot applications ke liye suitable
+                    hosting plan select karein aur
+                    required files/configuration upload
+                    karein.
+                </p>
+
+                <div class="code">
+                    Bot → Upload → Configure → Run
+                </div>
+
+            </article>
+
+
+            <article
+                class="doc-card"
+                id="vps"
+            >
+
+                <div class="doc-icon">
+                    🖥️
+                </div>
+
+                <h2>
+                    VPS Hosting
+                </h2>
+
+                <p>
+                    VPS ek virtual server environment
+                    provide karta hai jise aap apne
+                    application requirements ke
+                    according configure kar sakte hain.
+                </p>
+
+                <a href="vps.html">
+                    View VPS Plans →
+                </a>
+
+            </article>
+
+
+            <article
+                class="doc-card"
+                id="paas"
+            >
+
+                <div class="doc-icon">
+                    ⚡
+                </div>
+
+                <h2>
+                    Platform as a Service
+                </h2>
+
+                <p>
+                    PaaS applications deploy karne
+                    ke liye platform provide karta hai,
+                    jisse deployment aur management
+                    simpler ho jata hai.
+                </p>
+
+                <a href="paas.html">
+                    View PaaS →
+                </a>
+
+            </article>
+
+
+            <article
+                class="doc-card"
+                id="billing"
+            >
+
+                <div class="doc-icon">
+                    💳
+                </div>
+
+                <h2>
+                    Billing & Orders
+                </h2>
+
+                <p>
+                    Available plans aur prices dekhne
+                    ke liye pricing page open karein.
+                    Order place karne ke liye selected
+                    plan ke Order Now button ka use karein.
+                </p>
+
+                <a href="pricing.html">
+                    View Pricing →
+                </a>
+
+            </article>
+
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 TSA Web — All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+const search =
+    document.getElementById("search");
+
+const cards =
+    document.querySelectorAll(".doc-card");
+
+search.addEventListener("input",function(){
+
+    const value =
+        search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        const text =
+            card.textContent.toLowerCase();
+
+        if(text.includes(value)){
+            card.style.display="block";
+        }else{
+            card.style.display="none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
